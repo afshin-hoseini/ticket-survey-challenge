@@ -1,0 +1,9 @@
+.--survey-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.--survey-form > .next-btn {
+    align-self: flex-end;
+    margin-top: 16px;
+}
