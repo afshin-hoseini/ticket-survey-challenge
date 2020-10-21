@@ -1,0 +1,39 @@
+.regular-typo-style {
+    font-style: normal;
+}
+
+.bold-typo-style {
+    font-weight: bold;
+}
+
+.italic-typo-style {
+    font-style: italic;
+}
+
+.small-typo-size {
+    font-size: small;
+}
+
+.medium-typo-size {
+    font-size: medium;
+}
+
+.large-typo-size {
+    font-size: large;
+}
+
+.warning-typo-color {
+    color: darkorange;
+}
+
+.danger-typo-color {
+    color:red;
+}
+
+.light-typo-color {
+    color:white;
+}
+
+.dark-typo-color {
+    color:black;
+}
