@@ -1,0 +1,29 @@
+.--custom-btn {
+    background-color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 18px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s all ease;
+}
+
+.--custom-btn:hover {
+    transform: translateX(1px) translateY(-1px);
+    box-shadow:  -5px 6px 5px 0px rgb(0 0 0 / 22%);
+    -moz-box-shadow:  -5px 6px 5px 0px rgb(0 0 0 / 22%);
+}
+
+
+.--custom-btn:active {
+    filter: brightness(0.8);
+    transform: translateX(0) translateY(0);
+    box-shadow:  none;
+    -moz-box-shadow:  none;
+    transition: 0.1s all ease;
+}
+
+.danger-btn-mode {
+    background-color: #ff928d;
+    color: white;
+}
