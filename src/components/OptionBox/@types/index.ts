@@ -5,5 +5,5 @@ export type OptionBoxItem = {
   value: string | number;
 };
 export type OptionBoxComponentProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, 'children'> & {
-  options: OptionBoxItem[];
+  options?: OptionBoxItem[];
 };
