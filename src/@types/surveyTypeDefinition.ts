@@ -56,5 +56,5 @@ export type SurveyForm = SurveyEntry & {
   title?: string;
   description?: string;
   fields: SurveyField[];
-  children?: SurveyForm | SurveyTicketID[];
+  children?: (SurveyForm | SurveyTicketID)[];
 };

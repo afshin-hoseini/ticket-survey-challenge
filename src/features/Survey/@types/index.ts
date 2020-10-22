@@ -12,9 +12,12 @@ export type SurveyFormComponentProps = {
   form: SurveyForm;
   className?: string;
   onSubmit?: (name: string, values: { [fieldName: string]: SurveyFieldValue }) => void;
+  onPrevious?: () => void;
   loading?: boolean;
 };
 
 export type SurveyContainerProps = {
   survey?: SurveyEntry;
 };
+
+export type SurveyFormValuesDictionary = { [fieldName: string]: SurveyFieldValue };

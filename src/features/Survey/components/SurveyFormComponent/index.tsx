@@ -1,14 +1,15 @@
 import React, { FC, useCallback, useMemo, useState } from 'react';
 import { SurveyFieldValue } from 'src/@types';
 import { Button } from 'src/components/Button';
-import { SurveyFormComponentProps } from '../../@types';
-import { validateForm } from '../../utils';
+import { SurveyFormComponentProps, SurveyFormValuesDictionary } from '../../@types';
+import { validateForm, createInitialValues } from '../../utils';
 import { SurveyFieldComponent } from '../SurveyFieldComponent';
 import './styles.css';
 
 /** Illustrates a single survey form */
 export const SurveyFormComponent: FC<SurveyFormComponentProps> = ({ form, className = '', onSubmit }) => {
-  const [values, setValues] = useState<{ [fieldName: string]: SurveyFieldValue }>({});
+  const [values, setValues] = useState<SurveyFormValuesDictionary>(() => createInitialValues(form));
+
   //TODO: Should be unset when a field has been touched.
   const [errors, setErrors] = useState<{ [field: string]: string } | undefined>(undefined);
 
@@ -27,6 +28,7 @@ export const SurveyFormComponent: FC<SurveyFormComponentProps> = ({ form, classN
     onSubmit?.(form.name, values);
   }, [form, values, onSubmit]);
 
+  /** Rendered field elements */
   const fieldElements = useMemo(() => {
     return form.fields.map((field) => (
       <SurveyFieldComponent

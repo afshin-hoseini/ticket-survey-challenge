@@ -1,6 +1,8 @@
-import { SurveyEntry, SurveyEntryType, SurveyFieldType, SurveyForm } from 'src/@types';
+import { SurveyEntryType, SurveyFieldType, SurveyForm } from 'src/@types';
+import { longStay } from './step1Children/longStay';
+import { shortStay } from './step1Children/shortStay';
 
-export const form1: SurveyForm = {
+export const survey1: SurveyForm = {
   type: SurveyEntryType.Form,
   name: 'step1',
   fields: [
@@ -44,4 +46,5 @@ export const form1: SurveyForm = {
       required: true,
     },
   ],
+  children: [shortStay, longStay],
 };
