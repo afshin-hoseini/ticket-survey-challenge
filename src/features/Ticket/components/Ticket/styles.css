@@ -1,0 +1,63 @@
+.--ticket-container {
+
+    display: flex;
+    flex-direction: column;
+   
+    width: 100%;
+    max-width: 300px;
+}
+
+.tck-header {
+
+    min-height: 100px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: white;
+}
+
+.tck-perforation {
+    display: flex;
+    min-height: 20px;
+}
+
+.tck-perforation .cut-line-container {
+    background-color: white;
+    width: 100%;
+    min-height: 20px;
+    position: relative;
+}
+
+.tck-perforation .cut-line-container::after {
+    position: absolute;
+    content: "";
+    left: 2px;
+    right: 2px;
+    border-bottom: dashed gray 1px;
+    top: 50%;
+}
+
+.tck-perforation .hole-left {
+    width: 11px;
+    min-height: 20px;
+    clip-path: url(#perforation-clip-left);
+    background-color: white;
+}
+
+.tck-perforation .hole-right {
+    width: 11px;
+    min-height: 20px;
+    clip-path: url(#perforation-clip-right);
+    background-color: white;
+}
+
+.tck-routes {
+    min-height: 200px;
+    background-color: white;
+}
+
+.tck-answers {
+    min-height: 200px;
+    background-color: white;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
