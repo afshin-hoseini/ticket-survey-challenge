@@ -7,7 +7,7 @@ export const Typography: FC<TypographyComponentProps> = ({
   children,
   size = FontSize.medium,
   style = FontStyle.regular,
-  color = FontColor.light,
+  color = FontColor.dark,
   className,
 }) => {
   return useMemo(() => <span className={`${size} ${style} ${color} ${className}`}> {children}</span>, [
@@ -28,5 +28,5 @@ export const Description: FC<TypographyVariantProps> = (props) => {
 };
 
 export const Error: FC<TypographyVariantProps> = (props) => {
-  return <Typography color={FontColor.danger} {...props} size={FontSize.medium} style={FontStyle.regular} />;
+  return <Typography color={FontColor.danger} {...props} size={FontSize.small} style={FontStyle.regular} />;
 };
