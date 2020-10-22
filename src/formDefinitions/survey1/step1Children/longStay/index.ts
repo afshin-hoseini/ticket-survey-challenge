@@ -1,4 +1,6 @@
 import { SurveyEntryType, SurveyFieldType, SurveyForm } from 'src/@types';
+import { ticket4 } from './ticket4';
+import { wantBikeTrip } from './wantBikeTrip';
 
 export const longStay: SurveyForm = {
   type: SurveyEntryType.Form,
@@ -16,7 +18,7 @@ export const longStay: SurveyForm = {
       required: true,
     },
   ],
-  children: [],
+  children: [ticket4, wantBikeTrip],
   isEligible: (answers) => {
     let stay = answers?.['step1']?.['stay'];
     stay = isNaN(Number(stay)) ? 0 : Number(stay);
