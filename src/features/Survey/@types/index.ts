@@ -12,6 +12,7 @@ export type SurveyFormComponentProps = {
   form: SurveyForm;
   className?: string;
   onSubmit?: (name: string, values: { [fieldName: string]: SurveyFieldValue }) => void;
+  onBack?: () => void;
   onPrevious?: () => void;
   loading?: boolean;
 };

@@ -3,7 +3,14 @@
     flex-direction: column;
 }
 
-.--survey-form > .next-btn {
-    align-self: flex-end;
+
+.--survey-form .buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
     margin-top: 16px;
+}
+
+.--survey-form .buttons-container > button {
+    margin: 0 8px;
 }

@@ -1,13 +1,14 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { SurveyFieldValue } from 'src/@types';
 import { Button } from 'src/components/Button';
+import { ButtonMode } from 'src/components/Button/@types';
 import { SurveyFormComponentProps, SurveyFormValuesDictionary } from '../../@types';
 import { validateForm, createInitialValues } from '../../utils';
 import { SurveyFieldComponent } from '../SurveyFieldComponent';
 import './styles.css';
 
 /** Illustrates a single survey form */
-export const SurveyFormComponent: FC<SurveyFormComponentProps> = ({ form, className = '', onSubmit }) => {
+export const SurveyFormComponent: FC<SurveyFormComponentProps> = ({ form, className = '', onSubmit, onBack }) => {
   const [values, setValues] = useState<SurveyFormValuesDictionary>({});
 
   //TODO: Should be unset when a field has been touched.
@@ -46,12 +47,22 @@ export const SurveyFormComponent: FC<SurveyFormComponentProps> = ({ form, classN
     ));
   }, [form.fields, onFieldChangeHandler, errors]);
 
+  const canShowBackButton = onBack != undefined;
+
   return (
     <div className={`--survey-form ${className}`}>
-      {fieldElements}{' '}
-      <Button onClick={onNextClicked} className="next-btn">
-        Continue
-      </Button>
+      {fieldElements}
+
+      <div className="buttons-container">
+        {canShowBackButton && (
+          <Button onClick={onBack} mode={ButtonMode.danger} className="prev-btn">
+            Back
+          </Button>
+        )}
+        <Button onClick={onNextClicked} className="next-btn">
+          Continue
+        </Button>
+      </div>
     </div>
   );
 };
