@@ -12,6 +12,7 @@ export const shortStay: SurveyForm = {
       description: 'There are discount for kids under 12 years old.',
       type: SurveyFieldType.numberInput,
       required: true,
+      defaultValue: '0',
     },
   ],
   children: [ticket1, withKids],

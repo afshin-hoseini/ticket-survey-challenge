@@ -1,10 +1,13 @@
 import React, { FC } from 'react';
 import './App.css';
-import { HomePage } from 'src/pages/Home';
+import { TicketSellPage } from 'src/pages/TicketSellPage';
+import { TicketSellProvider } from './features/TicketSellContext';
 const App: FC = () => {
   return (
     <div className="App">
-      <HomePage />
+      <TicketSellProvider>
+        <TicketSellPage />
+      </TicketSellProvider>
     </div>
   );
 };

@@ -9,6 +9,7 @@ export const survey1: SurveyForm = {
     {
       name: 'firstName',
       title: 'Enter your first name:',
+      qnaSummaryQuestion: 'First name',
       description: 'We need it for your ticket',
       type: SurveyFieldType.textInput,
       required: true,
@@ -17,6 +18,7 @@ export const survey1: SurveyForm = {
     {
       name: 'lastName',
       title: 'And your last name:',
+      qnaSummaryQuestion: 'Last name',
       type: SurveyFieldType.textInput,
       required: true,
       placeholder: 'e.g: Hetfield',
@@ -24,6 +26,7 @@ export const survey1: SurveyForm = {
     {
       name: 'age',
       title: 'How old are you',
+      qnaSummaryQuestion: 'Age',
       type: SurveyFieldType.numberInput,
       required: true,
       defaultValue: 23,

@@ -1,0 +1,62 @@
+.--tck-rv{
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.--tck-rv-item {
+    display: flex;
+    margin: 10px 0;
+    border-bottom: dashed 1px lightgray;
+    padding-bottom: 4px;
+}
+
+.--tck-rv-item .rv-icon {
+    min-width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    padding: 4px;
+    box-sizing: border-box;
+    background-color: rgb(229 230 228 / 31%);
+    margin-top: 8px;
+}
+
+.--tck-rv-item .rv-coords {
+    text-align: left;
+}
+
+.--tck-rv-item .rv-coords .to-arrow {
+    opacity: 0.6;
+    margin: 0 4px;
+}
+
+.--tck-rv-item .rv-details {
+    display: flex;
+    flex-direction: column;
+    padding: 2px 6px;
+}
+
+.--tck-rv-item .rv-times {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6px;
+}
+
+.--tck-rv-item .rv-times .time {
+
+    min-width: 50px;
+    padding: 2px 6px;
+}
+
+.--tck-rv-item .rv-times .time.start {
+    background-color: #00ffc447;
+    border-radius: 5px 0 0 5px;
+}
+
+.--tck-rv-item .rv-times .time.end {
+    background-color: #ffe2ec;
+    border-radius: 0 5px 5px 0;
+}
+
+
+    

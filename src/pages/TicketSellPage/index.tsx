@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
-import './home.css';
+import './styles.css';
 import backgroundVideo from 'src/assets/videos/home-bkg.mp4';
+import { TicketOffer } from 'src/features/TicketOffer';
 
 /**
  * Represents the home page where the questionaire and ticket features would be shown.
  */
-export const HomePage: FC = () => {
+export const TicketSellPage: FC = () => {
   return (
-    <div className="homepage-container">
+    <div className="ticket-sell-main-container">
       {/* Contains the video background */}
       <div className="video-bkg-container">
         <video loop muted autoPlay className="video-bkg">
@@ -15,8 +16,10 @@ export const HomePage: FC = () => {
         </video>
       </div>
 
-      {/* A container holding the questionare form */}
-      <div className="questionaire-container"></div>
+      {/* A container holding the Ticket offer feature */}
+      <div className="questionaire-container">
+        <TicketOffer />
+      </div>
     </div>
   );
 };
