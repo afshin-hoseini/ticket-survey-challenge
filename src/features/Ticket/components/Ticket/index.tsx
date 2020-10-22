@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { TicketComponentProps } from '../../@types';
 import { RoutesViewer } from '../RoutesViewer';
 import './styles.css';
@@ -8,22 +8,26 @@ export const TicketComponent: FC<TicketComponentProps> = ({ className = '', tick
   return (
     <div className={`--ticket-container ${className}`}>
       <TicketHeaderComponent ticket={ticket} />
-      <div className="tck-perforation">
-        <div className="hole-left"></div>
-        <div className="cut-line-container"></div>
-        <div className="hole-right"></div>
-      </div>
+      <TicketPerforation />
       <div className="tck-details">
-        <div className="tck-routes">
-          <RoutesViewer routes={ticket?.routes} />
-        </div>
-        <div className="tck-answers"></div>
+        <RoutesViewer routes={ticket?.routes} />
       </div>
       <Clip />
     </div>
   );
 };
 
+const TicketPerforation = () =>
+  useMemo(
+    () => (
+      <div className="tck-perforation">
+        <div className="hole-left"></div>
+        <div className="cut-line-container"></div>
+        <div className="hole-right"></div>
+      </div>
+    ),
+    []
+  );
 const Clip = () => (
   <svg height={0}>
     <defs>

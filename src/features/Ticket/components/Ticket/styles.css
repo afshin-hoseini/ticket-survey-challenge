@@ -57,15 +57,6 @@
     background-color: white;
 }
 
-.tck-routes {
-    min-height: 200px;
-}
-
-.tck-answers {
-    min-height: 200px;
-    
-}
-
 .tck-details {
     background-color: white;
     border-bottom-left-radius: 20px;

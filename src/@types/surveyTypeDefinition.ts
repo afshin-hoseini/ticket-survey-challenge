@@ -38,6 +38,8 @@ export type SurveyField = {
   required: boolean;
   /** If return a string it would be counted as the error and it prevents the submission. */
   validate?: (value: SurveyFieldValue) => string | void;
+  /** A friendly question for Qna summary */
+  qnaSummaryQuestion?: string;
 };
 
 /** An abstract type that represent an entry of survey */

@@ -1,3 +1,4 @@
+import { type } from 'os';
 import { Route, Ticket } from 'src/@types';
 
 export type TicketComponentProps = {
@@ -19,4 +20,15 @@ export type RoutesViewerComponentProps = {
 
 export type RouteItemViewerComponentProps = {
   route: Route;
+};
+
+export type QnA = { question: string; answer?: string };
+export type TicketAndDetailsComponentProps = {
+  ticket?: Ticket;
+  /** Represents processed questions and and answers */
+  answers: QnA[];
+};
+
+export type QnaPreviewComponentProps = {
+  qnas: QnA[];
 };

@@ -3,15 +3,23 @@ import { SurveyEntryType, SurveyTicketID } from 'src/@types';
 import { ticketDataset } from 'src/dataSource/tickets';
 import { useTicketSell } from 'src/features/TicketSellContext';
 import { TicketComponent } from '../components/Ticket';
+import { TicketAndDetails } from '../components/TicketAndDetails';
+import { createProcessedQnA } from '../utils';
 
 export const Ticket: FC = () => {
-  const { currentEntry, surveyAnswer } = useTicketSell();
+  const { currentEntry, surveyAnswer, survey, prevEntries } = useTicketSell();
 
   const ticket = useMemo(() => {
     if (!currentEntry || currentEntry.type !== SurveyEntryType.Ticket) return undefined;
     return ticketDataset[(currentEntry as SurveyTicketID).id as keyof typeof ticketDataset];
   }, [currentEntry]);
 
-  if (ticket) return <TicketComponent ticket={ticket} />;
+  const proccessedQna = useMemo(() => createProcessedQnA(survey!, surveyAnswer!, prevEntries!, 0), [
+    prevEntries,
+    survey,
+    surveyAnswer,
+  ]);
+
+  if (ticket) return <TicketAndDetails ticket={ticket} answers={proccessedQna} />;
   return null;
 };
