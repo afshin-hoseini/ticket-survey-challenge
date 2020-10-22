@@ -10,6 +10,7 @@ export enum RouteType {
 export type Coordinate = {
   latitude: number;
   longitude: number;
+  name?: string;
 };
 export type Route = {
   type: RouteType;
