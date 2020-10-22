@@ -27,6 +27,8 @@ export type TicketAndDetailsComponentProps = {
   ticket?: Ticket;
   /** Represents processed questions and and answers */
   answers: QnA[];
+
+  reset?: () => void;
 };
 
 export type QnaPreviewComponentProps = {

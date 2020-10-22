@@ -44,6 +44,12 @@ export const TicketSellProvider: FC = ({ children }) => {
     });
   }, []);
 
+  const reset = useCallback(() => {
+    setPrevEntries([]);
+    setCurrentEntry(undefined);
+    setAnswers({});
+  }, []);
+
   /**
    * Fetches the next entry according to provided answer.
    */
@@ -53,8 +59,8 @@ export const TicketSellProvider: FC = ({ children }) => {
   }, [answers]);
 
   const contextValue = useMemo<TicketContextType>(
-    () => ({ surveyAnswer: answers, currentEntry, survey, submitAnswer, backToPrevEntry, prevEntries }),
-    [answers, currentEntry, submitAnswer, backToPrevEntry, prevEntries]
+    () => ({ surveyAnswer: answers, currentEntry, survey, submitAnswer, backToPrevEntry, prevEntries, reset }),
+    [answers, currentEntry, submitAnswer, backToPrevEntry, prevEntries, reset]
   );
 
   return <TicketSellContext.Provider value={contextValue}>{children}</TicketSellContext.Provider>;

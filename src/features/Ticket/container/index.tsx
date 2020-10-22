@@ -7,7 +7,7 @@ import { TicketAndDetails } from '../components/TicketAndDetails';
 import { createProcessedQnA } from '../utils';
 
 export const Ticket: FC = () => {
-  const { currentEntry, surveyAnswer, survey, prevEntries } = useTicketSell();
+  const { currentEntry, surveyAnswer, survey, prevEntries, reset } = useTicketSell();
 
   const ticket = useMemo(() => {
     if (!currentEntry || currentEntry.type !== SurveyEntryType.Ticket) return undefined;
@@ -20,6 +20,6 @@ export const Ticket: FC = () => {
     surveyAnswer,
   ]);
 
-  if (ticket) return <TicketAndDetails ticket={ticket} answers={proccessedQna} />;
+  if (ticket) return <TicketAndDetails ticket={ticket} answers={proccessedQna} reset={reset} />;
   return null;
 };
