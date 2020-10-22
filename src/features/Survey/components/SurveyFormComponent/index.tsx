@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo, useState } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { SurveyFieldValue } from 'src/@types';
 import { Button } from 'src/components/Button';
 import { SurveyFormComponentProps, SurveyFormValuesDictionary } from '../../@types';
@@ -8,10 +8,16 @@ import './styles.css';
 
 /** Illustrates a single survey form */
 export const SurveyFormComponent: FC<SurveyFormComponentProps> = ({ form, className = '', onSubmit }) => {
-  const [values, setValues] = useState<SurveyFormValuesDictionary>(() => createInitialValues(form));
+  const [values, setValues] = useState<SurveyFormValuesDictionary>({});
 
   //TODO: Should be unset when a field has been touched.
   const [errors, setErrors] = useState<{ [field: string]: string } | undefined>(undefined);
+
+  // Updates the states according to form change
+  useEffect(() => {
+    setValues(createInitialValues(form));
+    setErrors(undefined);
+  }, [form]);
 
   const onFieldChangeHandler = useCallback((name: string, value: SurveyFieldValue) => {
     setValues((prev) => ({ ...prev, [name]: value }));
