@@ -6,3 +6,8 @@ export type TicketComponentProps = {
   onCancelClicked?: () => void;
   onBuyClicked?: () => void;
 };
+
+export type TicketHeaderComponentProps = {
+  ticket?: Ticket;
+  className?: string;
+};

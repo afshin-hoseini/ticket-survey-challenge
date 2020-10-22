@@ -9,10 +9,17 @@
 
 .tck-header {
 
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     min-height: 100px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: white;
+
+    padding: 18px;
+    box-sizing: border-box;
+    box-shadow: -1px 3px 24px -5px rgba(89,88,89,1);
 }
 
 .tck-perforation {
@@ -52,12 +59,23 @@
 
 .tck-routes {
     min-height: 200px;
-    background-color: white;
 }
 
 .tck-answers {
     min-height: 200px;
+    
+}
+
+.tck-details {
     background-color: white;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
+    box-shadow: -1px 3px 24px -5px rgba(89,88,89,1);
+}
+
+.tck-header .code-and-title {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    align-items: flex-start;
 }
