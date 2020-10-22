@@ -4,10 +4,10 @@ import { RoutesViewer } from '../RoutesViewer';
 import './styles.css';
 import { TicketHeaderComponent } from './TicketHeader';
 
-export const TicketComponent: FC<TicketComponentProps> = ({ className = '' }) => {
+export const TicketComponent: FC<TicketComponentProps> = ({ className = '', ticket }) => {
   return (
     <div className={`--ticket-container ${className}`}>
-      <TicketHeaderComponent />
+      <TicketHeaderComponent ticket={ticket} />
       <div className="tck-perforation">
         <div className="hole-left"></div>
         <div className="cut-line-container"></div>
@@ -15,7 +15,7 @@ export const TicketComponent: FC<TicketComponentProps> = ({ className = '' }) =>
       </div>
       <div className="tck-details">
         <div className="tck-routes">
-          <RoutesViewer />
+          <RoutesViewer routes={ticket?.routes} />
         </div>
         <div className="tck-answers"></div>
       </div>
