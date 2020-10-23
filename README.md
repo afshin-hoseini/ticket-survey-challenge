@@ -1,44 +1,38 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Online Preview
 
-## Available Scripts
+You can visit a launched version of the web-app [here](http://bvg.tinypro.ir).
 
-In the project directory, you can run:
+# Run locally
 
-### `yarn start`
+As this project has been created using CRA, you can run it using like:
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+cd [project directory]
+npm start
+```
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# BVG Ticket Offer Web App
 
-### `yarn test`
+⚠️ This is just kind of code challenge, not production ready.
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+A sample app which loads a questionaire and asks questions depending on user's answers and at the end represents a sample ticket which is tailored to the user's requirements.
 
-### `yarn build`
+# Desicion making
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+As required on challenge prescription, this app simulates decision tree scrolling through pruning irrelevant branches, where `form`s are the branches and `ticket`s has been assumed to be leaves. On each scrolling phase, the eligible branch / leave (let's call them `entry`) will be examined through checking the answers of previous steps. This evaluation would be handled by the `entries` themselves.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+Each `form` can have a set of fields of type `text`, `number`, `date`, `time` and `options`. They can also validate their own value when answer submission happens.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Survey Data Source
 
-### `yarn eject`
+you can change ticket and survey data sources under `src/dataSource` folder. Both survey and ticket data sources are serializable and you can configure them using either JS or JSON.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Frameworks and libraries
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+On this project I tried to use React library (using CRA), HTML5 and CSS3 features and didn't use any other 3rd party libraries.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+I hestitated using `Redux` or `Recoil` or any other global state management libraries, since it was somehow obliged on challenge prescription.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# Scalability
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Since whole survey tree scrolling happens on a context (`TicketSellContext`), it can be connected to any data source and any decision maker resource easily. Also this context wraps whole App, which let other components use the same data all over the app. For example we can easily implement a bread crump feature.
