@@ -2,6 +2,8 @@ export enum SurveyFieldType {
   textInput = 'textInput',
   numberInput = 'numberInput',
   option = 'option',
+  date = 'dateInput',
+  time = 'timeInput',
 }
 
 export enum SurveyEntryType {

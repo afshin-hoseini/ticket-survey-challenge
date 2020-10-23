@@ -1,6 +1,6 @@
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { SurveyFieldType } from 'src/@types';
-import { NumericInput, TextInput } from 'src/components/Input';
+import { DateInput, NumericInput, TextInput, TimeInput } from 'src/components/Input';
 import { OptionBox } from 'src/components/OptionBox';
 import { Description, Error, Title } from 'src/components/Typography';
 import { SurveyFieldComponentProps } from '../../@types';
@@ -11,6 +11,8 @@ const fieldToComponentMap = {
   [SurveyFieldType.numberInput]: NumericInput,
   [SurveyFieldType.textInput]: TextInput,
   [SurveyFieldType.option]: OptionBox,
+  [SurveyFieldType.date]: DateInput,
+  [SurveyFieldType.time]: TimeInput,
 };
 
 /**
