@@ -16,9 +16,11 @@ export const TicketSellPage: FC = () => {
         </video>
       </div>
 
-      {/* A container holding the Ticket offer feature */}
-      <div className="questionaire-container">
-        <TicketOffer />
+      <div className="content-holder">
+        {/* A container holding the Ticket offer feature */}
+        <div className="questionaire-container">
+          <TicketOffer />
+        </div>
       </div>
     </div>
   );

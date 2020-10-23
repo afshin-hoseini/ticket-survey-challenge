@@ -1,12 +1,14 @@
 import React, { FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { SurveyAnswerMap, SurveyEntry, SurveyFieldValue } from 'src/@types';
-import { survey1 } from 'src/dataSource/survey1';
 import { TicketContextType } from './@types';
-import { getNextSurveyEntry } from './utils';
+import { convertJsonToSurveyObject, getNextSurveyEntry } from './utils';
 
 const TicketSellContext = React.createContext<TicketContextType>({});
 
-const survey = Object.freeze(survey1);
+/**
+ * Deserialized survey object
+ */
+const survey = Object.freeze(convertJsonToSurveyObject(require('src/dataSource/survey1.json')));
 
 export const TicketSellProvider: FC = ({ children }) => {
   const [answers, setAnswers] = useState<SurveyAnswerMap>({});
@@ -14,6 +16,9 @@ export const TicketSellProvider: FC = ({ children }) => {
   /** Keep a track of previously passed entries for back action support */
   const [prevEntries, setPrevEntries] = useState<string[]>([]);
 
+  /**
+   * Saves current form in entries history and updates the answers satate
+   */
   const submitAnswer = useCallback(
     (formName: string, values: { [k: string]: SurveyFieldValue }) => {
       const prevEntryName = currentEntry?.name;
@@ -25,6 +30,9 @@ export const TicketSellProvider: FC = ({ children }) => {
     [currentEntry]
   );
 
+  /**
+   * Pops the previous form from `prevEntities` and removes corresponding answers from relevant state.
+   */
   const backToPrevEntry = useCallback(() => {
     setPrevEntries((prevEntries) => {
       if (prevEntries.length === 0) return prevEntries;
@@ -44,6 +52,7 @@ export const TicketSellProvider: FC = ({ children }) => {
     });
   }, []);
 
+  /** Resets the survey answers */
   const reset = useCallback(() => {
     setPrevEntries([]);
     setCurrentEntry(undefined);
@@ -51,13 +60,14 @@ export const TicketSellProvider: FC = ({ children }) => {
   }, []);
 
   /**
-   * Fetches the next entry according to provided answer.
+   * Fetches the appropriate entry, according to provided answer.
    */
   useEffect(() => {
     const nextEntry = getNextSurveyEntry(survey, answers);
     setCurrentEntry(nextEntry);
   }, [answers]);
 
+  /** Creates a memoized context value */
   const contextValue = useMemo<TicketContextType>(
     () => ({ surveyAnswer: answers, currentEntry, survey, submitAnswer, backToPrevEntry, prevEntries, reset }),
     [answers, currentEntry, submitAnswer, backToPrevEntry, prevEntries, reset]

@@ -6,7 +6,7 @@ export default {
   title: 'Short stay with no kids',
   routes: [
     {
-      type: RouteType.bike,
+      type: RouteType.subway,
       start: { latitude: 0.345, longitude: 0.234, name: 'street 1st' },
       end: { latitude: 0.345, longitude: 0.234, name: 'street 2nd' },
       startTime: new Date(2020, 5, 6, 10, 20),

@@ -26,5 +26,12 @@ export default {
       startTime: new Date(2020, 5, 6, 11, 30),
       endTime: new Date(2020, 5, 6, 11, 55),
     },
+    {
+      type: RouteType.subway,
+      start: { latitude: 0.345, longitude: 0.234, name: 'Station A' },
+      end: { latitude: 0.345, longitude: 0.234, name: 'Station B' },
+      startTime: new Date(2020, 5, 6, 11, 56),
+      endTime: new Date(2020, 5, 6, 12, 50),
+    },
   ],
 } as Ticket;
