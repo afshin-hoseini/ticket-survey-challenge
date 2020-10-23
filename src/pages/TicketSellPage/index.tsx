@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import './styles.css';
 import backgroundVideo from 'src/assets/videos/home-bkg.mp4';
 import { TicketOffer } from 'src/features/TicketOffer';
+import { Header } from 'src/components/Header';
 
 /**
  * Represents the home page where the questionaire and ticket features would be shown.
@@ -17,6 +18,7 @@ export const TicketSellPage: FC = () => {
       </div>
 
       <div className="content-holder">
+        <Header />
         {/* A container holding the Ticket offer feature */}
         <div className="questionaire-container">
           <TicketOffer />
