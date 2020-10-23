@@ -17,6 +17,20 @@
             "type": "textInput",
             "required": true,
             "placeholder": "e.g: Rammstein Concert Hall"
+        },
+        {
+            "name": "date",
+            "title": "Departure date:",
+            "qnaSummaryQuestion": "Departure date",
+            "type": "dateInput",
+            "required": true
+        },
+        {
+            "name": "time",
+            "title": "Departure time:",
+            "qnaSummaryQuestion": "Departure time",
+            "type": "timeInput",
+            "required": true
         }
     ],
     "children": [
