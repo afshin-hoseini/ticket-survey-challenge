@@ -36,3 +36,9 @@ I hestitated using `Redux` or `Recoil` or any other global state management libr
 # Scalability
 
 Since whole survey tree scrolling happens on a context (`TicketSellContext`), it can be connected to any data source and any decision maker resource easily. Also this context wraps whole App, which let other components use the same data all over the app. For example we can easily implement a bread crump feature.
+
+# Current sample decision tree
+
+The app comes with a sample decision tree at `src/dataSource/survey1.json`, which has a definition as below:
+
+![sample survey diagram](sampleSurveyDiagram.png)
