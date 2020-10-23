@@ -1,0 +1,16 @@
+.--survey-form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.--survey-form .buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+
+.--survey-form .buttons-container > button {
+    margin: 0 8px;
+}
