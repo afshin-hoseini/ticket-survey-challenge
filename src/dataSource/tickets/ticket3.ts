@@ -6,7 +6,7 @@ export default {
   title: 'Short stay with baby stroller',
   routes: [
     {
-      type: RouteType.bike,
+      type: RouteType.bus,
       start: { latitude: 0.345, longitude: 0.234, name: 'street 1st' },
       end: { latitude: 0.345, longitude: 0.234, name: 'street 2nd' },
       startTime: new Date(2020, 5, 6, 10, 20),
@@ -20,7 +20,7 @@ export default {
       endTime: new Date(2020, 5, 6, 11, 30),
     },
     {
-      type: RouteType.bus,
+      type: RouteType.subway,
       start: { latitude: 0.345, longitude: 0.234, name: 'Station 25th' },
       end: { latitude: 0.345, longitude: 0.234, name: 'Amadeus Park' },
       startTime: new Date(2020, 5, 6, 11, 30),
