@@ -1,0 +1,189 @@
+{
+    "type": "form",
+    "name": "step1",
+    "fields": [
+        {
+            "name": "firstName",
+            "title": "Enter your first name:",
+            "qnaSummaryQuestion": "First name",
+            "description": "We need it for your ticket",
+            "type": "textInput",
+            "required": true,
+            "placeholder": "e.g: James"
+        },
+        {
+            "name": "lastName",
+            "title": "And your last name:",
+            "qnaSummaryQuestion": "Last name",
+            "type": "textInput",
+            "required": true,
+            "placeholder": "e.g: Hetfield"
+        },
+        {
+            "name": "age",
+            "title": "How old are you",
+            "qnaSummaryQuestion": "Age",
+            "type": "numberInput",
+            "required": true,
+            "defaultValue": 23,
+            "validate": "function(value){\nlet v = Number(value);\nv = isNaN(v) ? 0 : v;\nif (v < 18) return 'Must be older than 18';\n}"
+        },
+        {
+            "name": "stay",
+            "title": "How long would you stay?",
+            "type": "option",
+            "options": [
+                {
+                    "label": "Less than a week",
+                    "value": 1
+                },
+                {
+                    "label": "Around two weeks",
+                    "value": 2
+                },
+                {
+                    "label": "Around a month",
+                    "value": 3
+                },
+                {
+                    "label": "More than a month",
+                    "value": 4
+                }
+            ],
+            "required": true
+        }
+    ],
+    "children": [
+        {
+            "type": "form",
+            "name": "shortStay",
+            "fields": [
+                {
+                    "name": "kidsCount",
+                    "title": "How many kids are with you?",
+                    "description": "There are discount for kids under 12 years old.",
+                    "type": "numberInput",
+                    "required": true,
+                    "defaultValue": "0"
+                }
+            ],
+            "children": [
+                {
+                    "type": "ticket",
+                    "name": "ticket1",
+                    "id": "T1",
+                    "isEligible": "function(answers){\nlet kidsCount = answers['shortStay']['kidsCount'] || 0; \n kidsCount = isNaN(Number(kidsCount)) ? 0 : Number(kidsCount); \n return kidsCount == 0;\n}"
+                },
+                {
+                    "type": "form",
+                    "name": "withKids",
+                    "fields": [
+                        {
+                            "name": "anyUnder5",
+                            "title": "Is any of the kids under 5 yrs?",
+                            "description": "For kids under 5 year you may need to carry baby stroller.",
+                            "type": "option",
+                            "options": [
+                                {
+                                    "label": "No",
+                                    "value": "no"
+                                },
+                                {
+                                    "label": "Yes",
+                                    "value": "yes"
+                                }
+                            ],
+                            "required": true
+                        }
+                    ],
+                    "children": [
+                        {
+                            "type": "ticket",
+                            "name": "ticket2",
+                            "id": "T2",
+                            "isEligible": "function(answers){\n const anyUnde5 = answers['withKids']['anyUnder5'];\n return anyUnde5 === 'no';}"
+                        },
+                        {
+                            "type": "ticket",
+                            "name": "ticket3",
+                            "id": "T3",
+                            "isEligible": "function(answers){\n const anyUnde5 = answers['withKids']['anyUnder5'];\n return anyUnde5 === 'yes';}"
+                        }
+                    ],
+                    "isEligible": "function(answers){\nlet kidsCount = answers['shortStay']['kidsCount'] || 0;\nkidsCount = isNaN(Number(kidsCount)) ? 0 : Number(kidsCount); \n return kidsCount > 0;\n}"
+                }
+            ],
+            "isEligible": "function(answers){\nlet stay = answers['step1']['stay']; \nstay = isNaN(Number(stay)) ? 0 : Number(stay); \n return stay <= 2;}"
+        },
+        {
+            "type": "form",
+            "name": "longStay",
+            "fields": [
+                {
+                    "name": "haveBike",
+                    "title": "Do you have a bike with you?",
+                    "description": "We can help you with bike specific vehicles.",
+                    "type": "option",
+                    "options": [
+                        {
+                            "label": "Yes",
+                            "value": "yes"
+                        },
+                        {
+                            "label": "No",
+                            "value": "no"
+                        }
+                    ],
+                    "required": true
+                }
+            ],
+            "children": [
+                {
+                    "type": "ticket",
+                    "name": "ticket4",
+                    "id": "T4",
+                    "isEligible": "function(answers){\nconst haveBike = answers['longStay']['haveBike']; \n return haveBike === 'no';\n}"
+                },
+                {
+                    "type": "form",
+                    "name": "wantBikeTrip",
+                    "fields": [
+                        {
+                            "name": "bikeTrip",
+                            "title": "Do you want to have a bike trip?",
+                            "description": "We can help you with bike trip planning too️",
+                            "type": "option",
+                            "options": [
+                                {
+                                    "label": "Yes",
+                                    "value": "yes"
+                                },
+                                {
+                                    "label": "No",
+                                    "value": "no"
+                                }
+                            ],
+                            "required": true
+                        }
+                    ],
+                    "children": [
+                        {
+                            "type": "ticket",
+                            "name": "ticket5",
+                            "id": "T5",
+                            "isEligible": "function(answers){ \n const bikeTrip = answers['wantBikeTrip']['bikeTrip']; \n return bikeTrip === 'no';\n}"
+                        },
+                        {
+                            "type": "ticket",
+                            "name": "ticket6",
+                            "id": "T6",
+                            "isEligible": "function(answers){ \n const bikeTrip = answers['wantBikeTrip']['bikeTrip']; \n return bikeTrip === 'yes';\n}"
+                        }
+                    ],
+                    "isEligible": "function(answers){\nconst haveBike = answers['longStay']['haveBike']; \n return haveBike === 'yes';\n}"
+                }
+            ],
+            "isEligible": "function(answers){ let stay = answers['step1']['stay']; \n stay = isNaN(Number(stay)) ? 0 : Number(stay); \n return stay > 2;\n}"
+        }
+    ]
+}

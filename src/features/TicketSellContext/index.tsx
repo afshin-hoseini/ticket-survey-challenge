@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { SurveyAnswerMap, SurveyEntry, SurveyFieldValue } from 'src/@types';
-import { survey1 } from 'src/dataSource/survey1';
 import { TicketContextType } from './@types';
-import { getNextSurveyEntry } from './utils';
+import { convertJsonToSurveyObject, getNextSurveyEntry } from './utils';
 
 const TicketSellContext = React.createContext<TicketContextType>({});
 
-const survey = Object.freeze(survey1);
+/** Deserialized survey object */
+const survey = convertJsonToSurveyObject(require('src/dataSource/survey1.json'));
 
 export const TicketSellProvider: FC = ({ children }) => {
   const [answers, setAnswers] = useState<SurveyAnswerMap>({});
@@ -44,6 +44,7 @@ export const TicketSellProvider: FC = ({ children }) => {
     });
   }, []);
 
+  /** Resets the survey answers */
   const reset = useCallback(() => {
     setPrevEntries([]);
     setCurrentEntry(undefined);
