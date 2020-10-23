@@ -14,7 +14,7 @@ export const TextInput: FC<Omit<InputComponentProps, 'type'>> = (props) => {
 };
 
 export const NumericInput: FC<Omit<InputComponentProps, 'type'>> = (props) => {
-  return <Input {...props} type="number" step={1} />;
+  return <Input {...props} type="number" step={1} min={0} />;
 };
 
 export const DateInput: FC<Omit<InputComponentProps, 'type'>> = (props) => {
