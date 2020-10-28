@@ -3,7 +3,7 @@ import { RouteType, Ticket } from 'src/@types';
 export default {
   code: 'MQX12',
   id: 'T1',
-  title: 'Short stay with no kids',
+  title: 'Short trip',
   routes: [
     {
       type: RouteType.subway,

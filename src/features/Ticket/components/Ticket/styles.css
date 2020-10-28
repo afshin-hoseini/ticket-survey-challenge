@@ -5,6 +5,18 @@
    
     width: 100%;
     max-width: 300px;
+
+    
+}
+
+.--ticket-container.collapsed{
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: -1px 3px 24px -5px rgba(89,88,89,1);
+}
+
+.--ticket-container.collapsed > .tck-header{
+    box-shadow: none;
 }
 
 .tck-header {
@@ -20,6 +32,7 @@
     padding: 18px;
     box-sizing: border-box;
     box-shadow: -1px 3px 24px -5px rgba(89,88,89,1);
+    cursor: pointer;
 }
 
 .tck-perforation {
@@ -61,7 +74,6 @@
     background-color: white;
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
-    box-shadow: -1px 3px 24px -5px rgba(89,88,89,1);
 }
 
 .tck-header .code-and-title {
@@ -70,4 +82,13 @@
     padding: 10px;
     align-items: flex-start;
     text-align: start;
+}
+
+.tck-body {
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.tck-body.collapsed {
+    max-height: 0 !important;
 }

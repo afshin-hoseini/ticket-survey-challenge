@@ -4,13 +4,17 @@ import { Route, Ticket } from 'src/@types';
 export type TicketComponentProps = {
   ticket?: Ticket;
   className?: string;
+  isExpanded?: boolean;
   onCancelClicked?: () => void;
   onBuyClicked?: () => void;
+  onExpandRequested?: (ticketId: string) => void;
 };
 
 export type TicketHeaderComponentProps = {
   ticket?: Ticket;
   className?: string;
+  isExpanded?: boolean;
+  onClick?: () => void;
 };
 
 export type RoutesViewerComponentProps = {
@@ -24,7 +28,7 @@ export type RouteItemViewerComponentProps = {
 
 export type QnA = { question: string; answer?: string };
 export type TicketAndDetailsComponentProps = {
-  ticket?: Ticket;
+  tickets?: Ticket[];
   /** Represents processed questions and and answers */
   answers: QnA[];
 

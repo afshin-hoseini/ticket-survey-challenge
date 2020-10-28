@@ -3,7 +3,7 @@ import { RouteType, Ticket } from 'src/@types';
 export default {
   code: 'MJU90',
   id: 'T2',
-  title: 'Short stay with kids',
+  title: 'Single fare',
   routes: [
     {
       type: RouteType.subway,
