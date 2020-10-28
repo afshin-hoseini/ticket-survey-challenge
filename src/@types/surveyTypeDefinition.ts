@@ -53,7 +53,7 @@ export type SurveyEntry = {
 };
 
 export type SurveyTicketID = SurveyEntry & {
-  id: string;
+  id: string | string[];
 };
 /** Represents a single form of questions in a questionaire */
 export type SurveyForm = SurveyEntry & {

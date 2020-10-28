@@ -3,22 +3,6 @@
     "name": "travelPoints",
     "fields": [
         {
-            "name": "from",
-            "title": "Where your juorney starts?",
-            "qnaSummaryQuestion": "From",
-            "type": "textInput",
-            "required": true,
-            "placeholder": "e.g: Suare 25th"
-        },
-        {
-            "name": "to",
-            "title": "Where to?",
-            "qnaSummaryQuestion": "Destination",
-            "type": "textInput",
-            "required": true,
-            "placeholder": "e.g: Rammstein Concert Hall"
-        },
-        {
             "name": "date",
             "title": "Departure date:",
             "qnaSummaryQuestion": "Departure date",
@@ -107,7 +91,10 @@
                         {
                             "type": "ticket",
                             "name": "ticket1",
-                            "id": "T1",
+                            "id": [
+                                "T1",
+                                "T2"
+                            ],
                             "isEligible": "function(answers){\nlet kidsCount = answers['shortStay']['kidsCount'] || 0; \n kidsCount = isNaN(Number(kidsCount)) ? 0 : Number(kidsCount); \n return kidsCount == 0;\n}"
                         },
                         {
@@ -136,13 +123,21 @@
                                 {
                                     "type": "ticket",
                                     "name": "ticket2",
-                                    "id": "T2",
+                                    "id": [
+                                        "T2",
+                                        "T3",
+                                        "T4"
+                                    ],
                                     "isEligible": "function(answers){\n const anyUnde5 = answers['withKids']['anyUnder5'];\n return anyUnde5 === 'no';}"
                                 },
                                 {
                                     "type": "ticket",
                                     "name": "ticket3",
-                                    "id": "T3",
+                                    "id": [
+                                        "T5",
+                                        "T3",
+                                        "T1"
+                                    ],
                                     "isEligible": "function(answers){\n const anyUnde5 = answers['withKids']['anyUnder5'];\n return anyUnde5 === 'yes';}"
                                 }
                             ],
@@ -177,7 +172,11 @@
                         {
                             "type": "ticket",
                             "name": "ticket4",
-                            "id": "T4",
+                            "id": [
+                                "T1",
+                                "T6",
+                                "T5"
+                            ],
                             "isEligible": "function(answers){\nconst haveBike = answers['longStay']['haveBike']; \n return haveBike === 'no';\n}"
                         },
                         {
@@ -206,13 +205,20 @@
                                 {
                                     "type": "ticket",
                                     "name": "ticket5",
-                                    "id": "T5",
+                                    "id": [
+                                        "T1",
+                                        "T5"
+                                    ],
                                     "isEligible": "function(answers){ \n const bikeTrip = answers['wantBikeTrip']['bikeTrip']; \n return bikeTrip === 'no';\n}"
                                 },
                                 {
                                     "type": "ticket",
                                     "name": "ticket6",
-                                    "id": "T6",
+                                    "id": [
+                                        "T6",
+                                        "T2",
+                                        "T5"
+                                    ],
                                     "isEligible": "function(answers){ \n const bikeTrip = answers['wantBikeTrip']['bikeTrip']; \n return bikeTrip === 'yes';\n}"
                                 }
                             ],

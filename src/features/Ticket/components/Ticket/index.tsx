@@ -1,17 +1,35 @@
-import React, { FC, useMemo } from 'react';
+import React, { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { TicketComponentProps } from '../../@types';
 import { RoutesViewer } from '../RoutesViewer';
 import './styles.css';
 import { TicketHeaderComponent } from './TicketHeader';
 
-export const TicketComponent: FC<TicketComponentProps> = ({ className = '', ticket }) => {
+export const TicketComponent: FC<TicketComponentProps> = ({
+  className = '',
+  ticket,
+  onExpandRequested,
+  isExpanded,
+}) => {
+  const onExpand = useCallback(() => ticket && onExpandRequested?.(ticket.id), [onExpandRequested, ticket]);
+  const bodyRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!bodyRef.current) return;
+    bodyRef.current.style.maxHeight = `${bodyRef.current.scrollHeight}px`;
+  }, [isExpanded]);
+
+  const expandClassName = isExpanded ? 'expanded' : 'collapsed';
+
   return (
-    <div className={`--ticket-container ${className}`}>
-      <TicketHeaderComponent ticket={ticket} />
-      <TicketPerforation />
-      <div className="tck-details">
-        <RoutesViewer routes={ticket?.routes} />
+    <div className={`--ticket-container ${className} ${expandClassName}`}>
+      <TicketHeaderComponent ticket={ticket} onClick={onExpand} className={expandClassName} isExpanded={isExpanded} />
+
+      <div ref={bodyRef} className={`tck-body ${isExpanded ? 'expanded' : 'collapsed'}`}>
+        <TicketPerforation />
+        <div className="tck-details">
+          <RoutesViewer routes={ticket?.routes} />
+        </div>
       </div>
+
       <Clip />
     </div>
   );
